@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ro'yxatdan O'tish</title>
+    <link rel="stylesheet" href="/styles/register.css">
+   
+</head>
+<body>
+    <div class="container">
+        <h1>Ro'yxatdan O'tish</h1>
+        <form id="register-form">
+            <input type="text" id="full_name" placeholder="Ism va familiya" required>
+            <input type="tel" id="phone_number" placeholder="Telefon raqami" required>
+            <input type="password" id="password" placeholder="Parol" required>
+            <input type="password" id="password2" placeholder="Parolni tasdiqlang" required>
+            <input type="file" id="avatar" accept="image/*">
+            <button type="submit" class="register-btn">Ro'yxatdan o'tish</button>
+        </form>
+        <button class="login-btn" onclick="window.location.href='login.html'">Tizimga kirish</button>
+     
+    </div>
+    
+     <script defer src="/js/register.js"></script>
+</body>
+</html>
