@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yangi blog qo‘shish</title>
+    <link rel="stylesheet" href="/styles/system.css">
+   
+</head>
+<body>
+    <div class="container">
+
+        <h1>Yangi Blog Qo‘shish</h1>
+
+        <form id="blog-form" enctype="multipart/form-data">
+            <label for="blog-title">Sarlavha:</label>
+            <input type="text" id="blog-title" placeholder="Blog sarlavhasi" required>
+
+            <label for="blog-description">Tavsif:</label>
+            <textarea id="blog-description" placeholder="Blog tavsifi" required></textarea>
+
+            <label for="blog-date">Sanasi:</label>
+            <input type="date" id="blog-date">
+
+            <label for="blog-image">Rasm:</label>
+            <input type="file" id="blog-image" accept="image/*" required>
+
+            <button type="submit">Blog qo‘shish</button>
+        </form>
+
+        <div id="blog-list"></div>
+
+        <button onclick="window.location.href='blogs.html'">Ortga</button>
+
+    </div>
+    <script defer src="/js/system.js"></script>
+</body>
+</html>

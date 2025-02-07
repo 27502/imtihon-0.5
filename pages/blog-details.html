@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Tafsilotlari</title>
+    <title>Blog tafsilotlari</title>
     <link rel="stylesheet" href="/styles/blogs-detals.css">
-    <script defer src="blog-details.js"></script>
+   
 </head>
 <body>
     <div class="container">
-        <h1 id="blog-title">Blog Sarlavhasi</h1>
-        <p id="blog-content">Blog mazmuni yuklanmoqda...</p>
+        <h1 id="blog-title">Blog nomi</h1>
+        <img id="blog-image" src="" alt="Blog rasmi">
+        <p id="blog-content">Blog mazmuni</p>
+        <p id="blog-date">Sana</p>
+        <div id="comments-section">
+            <h3>Izohlar</h3>
+            <ul id="comments-list"></ul> 
+        
+            <textarea id="comment-text" placeholder="Izoh yozing..."></textarea>
+            <button id="add-comment-btn">Izoh qo‘shish</button>
+        </div>
+        
         <button onclick="window.location.href='blogs.html'">Ortga</button>
     </div>
+    <script defer src="/js/blog-details.js"></script>
 </body>
 </html>

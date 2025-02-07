@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilni Tahrirlash</title>
+    <link rel="stylesheet" href="/styles/profile.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Profilni Tahrirlash</h1>
+        
+        <!-- Profilni tahrirlash formasi -->
+        <form id="edit-profile-form">
+            <label for="full_name">To'liq Ism:</label>
+            <input type="text" id="full_name" name="full_name" required>
+
+            <label for="phone_number">Telefon Raqami:</label>
+            <input type="text" id="phone_number" name="phone_number" required>
+
+            <label for="avatar">Avatar:</label>
+            <input type="file" id="avatar" name="avatar" required>
+
+            <button type="submit">Saqlash</button>
+        </form>
+
+        <!-- Ortga qaytish tugmasi -->
+        <button id="back-btn" class="back-btn">Ortga qaytish</button>
+    </div>
+
+    <script src="/js/profile.js"></script>
+</body>
+</html>
