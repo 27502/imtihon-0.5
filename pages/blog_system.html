@@ -3,40 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yangi blog qo‘shish</title>
-    <link rel="stylesheet" href="/styles/system.css">
+    <title>Blog tafsilotlari</title>
+    <link rel="stylesheet" href="/styles/blogs-detals.css">
 </head>
 <body>
     <div class="container">
-        <h1>Yangi Blog Qo‘shish</h1>
+        <h1 id="blog-title">Blog nomi</h1>
+        <img id="blog-image" src="" alt="Blog rasmi">
+        <p id="blog-content">Blog mazmuni</p>
+        <p id="blog-date">Sana</p>
 
-        <form id="blog-form" enctype="multipart/form-data">
-            <label for="blog-title">Sarlavha:</label>
-            <input type="text" id="blog-title" placeholder="Blog sarlavhasi" required>
-
-            <label for="blog-category">Kategoriya:</label>
-            <select id="blog-category" required>
-                <option value="" disabled selected>Tanlang</option>
-                <option value="1">Texnologiya</option>
-                <option value="2">Hayot tarzi</option>
-                <option value="3">Ilm-fan</option>
-            </select>
-
-            <label for="blog-description">Tavsif:</label>
-            <textarea id="blog-description" placeholder="Blog tavsifi" required></textarea>
-
-            <label for="blog-date">Sanasi:</label>
-            <input type="date" id="blog-date">
-
-            <label for="blog-image">Rasm:</label>
-            <input type="file" id="blog-image" accept="image/*" required>
-
-            <button type="submit">Blog qo‘shish</button>
-        </form>
-
+        <div id="comments-section">
+            <h3>Izohlar</h3>
+            <ul id="comments-list"></ul> 
+            
+            <textarea id="comment-text" placeholder="Izoh yozing..."></textarea>
+            <button id="add-comment-btn"><i class="fas fa-paper-plane"></i> Izoh qo‘shish</button>
+        </div>
+        
         <button onclick="window.location.href='blogs.html'">Ortga</button>
     </div>
 
-    <script defer src="/js/system.js"></script>
+    <script defer src="/js/blog-details.js"></script>
 </body>
 </html>
