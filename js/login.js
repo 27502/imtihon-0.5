@@ -14,17 +14,25 @@ document.getElementById('login-form').addEventListener('submit', async function(
             },
             body: JSON.stringify(loginData)
         });
-        
-        if (response.ok) {
-            const data = await response.json();
-            localStorage.setItem('token', data.token);
-            alert('Muvaffaqiyatli tizimga kirdingiz!');
-            window.location.href = 'blogs.html';
-        } else {
-            const errorData = await response.json();
-            alert('Xatolik: ' + JSON.stringify(errorData));
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            throw new Error(data.message || 'Xatolik yuz berdi');
         }
+
+        localStorage.setItem('access_token', data.data.token.access);
+        localStorage.setItem('refresh_token', data.data.token.refresh);
+        localStorage.setItem('user_data', JSON.stringify({
+            phone_number: data.data.phone_number,
+            full_name: data.data.full_name,
+            email: data.data.email
+        }));
+
+        alert('Muvaffaqiyatli tizimga kirdingiz!');
+        window.location.href = 'blogs.html';
     } catch (error) {
-        alert('Server bilan boglanishda xatolik yuz berdi!');
+        console.log(error);
+        alert(error.message || 'Server bilan bog‘lanishda xatolik yuz berdi');
     }
 });

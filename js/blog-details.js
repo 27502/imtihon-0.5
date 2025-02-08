@@ -22,11 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("blog-date").textContent = `Sana: ${blog.date}`;
     document.getElementById("blog-image").src = blog.image;
 
-    // **COMMENTLARNI YUKLASH FUNKSIYASI**
     function loadComments() {
         const comments = JSON.parse(localStorage.getItem(`comments-${blogId}`)) || [];
         const commentsList = document.getElementById("comments-list");
-        commentsList.innerHTML = ""; // Eski commentlarni tozalash
+        commentsList.innerHTML = ""; 
 
         comments.forEach(comment => {
             const li = document.createElement("li");
@@ -35,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // **COMMENT QO‘SHISH FUNKSIYASI**
     document.getElementById("add-comment-btn").addEventListener("click", function () {
         const commentText = document.getElementById("comment-text").value.trim();
         if (commentText === "") {
@@ -47,9 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
         comments.push(commentText);
         localStorage.setItem(`comments-${blogId}`, JSON.stringify(comments));
 
-        document.getElementById("comment-text").value = ""; // Inputni tozalash
-        loadComments(); // Yangi commentlarni chiqarish
+        document.getElementById("comment-text").value = ""; 
+        loadComments(); 
     });
 
-    loadComments(); // Sahifa yuklanganda commentlarni chiqarish
+    loadComments();
 });

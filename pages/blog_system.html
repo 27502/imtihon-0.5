@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yangi blog qo‘shish</title>
     <link rel="stylesheet" href="/styles/system.css">
-   
 </head>
 <body>
     <div class="container">
-
         <h1>Yangi Blog Qo‘shish</h1>
 
         <form id="blog-form" enctype="multipart/form-data">
             <label for="blog-title">Sarlavha:</label>
             <input type="text" id="blog-title" placeholder="Blog sarlavhasi" required>
+
+            <label for="blog-category">Kategoriya:</label>
+            <select id="blog-category" required>
+                <option value="" disabled selected>Tanlang</option>
+                <option value="1">Texnologiya</option>
+                <option value="2">Hayot tarzi</option>
+                <option value="3">Ilm-fan</option>
+            </select>
 
             <label for="blog-description">Tavsif:</label>
             <textarea id="blog-description" placeholder="Blog tavsifi" required></textarea>
@@ -28,11 +34,9 @@
             <button type="submit">Blog qo‘shish</button>
         </form>
 
-        <div id="blog-list"></div>
-
         <button onclick="window.location.href='blogs.html'">Ortga</button>
-
     </div>
+
     <script defer src="/js/system.js"></script>
 </body>
 </html>

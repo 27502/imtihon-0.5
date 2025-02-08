@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', async function() {
     // Tokenni tekshirish
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('access_token' && "refresh_token");
     if (!token) {
-        alert('Iltimos, avval tizimga kiring!');
+        alert("Iltimos, avval tizimga ro'yxatdan o'ting!");
         window.location.href = 'login.html';
         return;
     }
