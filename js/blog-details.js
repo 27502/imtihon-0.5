@@ -18,59 +18,39 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
-    // Blog ma'lumotlarini sahifaga joylash
+    // Blogni sahifaga joylash
     document.getElementById("blog-title").textContent = blog.title;
     document.getElementById("blog-content").textContent = blog.description;
     document.getElementById("blog-date").textContent = `Sana: ${blog.date}`;
     document.getElementById("blog-image").src = blog.image;
 
+    // Izohlar bo'limi
     const commentsContainer = document.getElementById("comments-list");
     const commentInput = document.getElementById("comment-text");
     const commentButton = document.getElementById("add-comment-btn");
 
-    const token = localStorage.getItem("access_token"); // Foydalanuvchi avtorizatsiyadan o'tganligini tekshirish
+    const token = localStorage.getItem("access_token");
 
-    // API orqali izohlarni yuklash
+    // Izohlarni yuklash
     async function loadComments() {
         try {
             const response = await fetch(`https://asadbek6035.pythonanywhere.com/blog/comment/list?blog_id=${blogId}`);
             const comments = await response.json();
             commentsContainer.innerHTML = "";
 
-            if (comments.length === 0) {
-                commentsContainer.innerHTML = `
-                    <div class="no-comments">
-                        <i class="fas fa-comments"></i>
-                        <p>Hozircha izohlar yo'q. Birinchi bo'lib izoh qoldiring!</p>
-                    </div>
-                `;
+            if (!comments || comments.length === 0) {
+                commentsContainer.innerHTML = `<p>Hozircha izohlar yo'q.</p>`;
                 return;
             }
 
             comments.forEach(comment => {
-                commentsContainer.innerHTML += `
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="comment-author">
-                                <i class="fas fa-user-circle"></i>
-                                <span>${comment.author || "Anonim"}</span>
-                            </div>
-                            <div class="comment-date">
-                                <i class="fas fa-clock"></i>
-                                <span>${new Date(comment.created_at).toLocaleDateString("uz-UZ", {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                    hour: "2-digit",
-                                    minute: "2-digit"
-                                })}</span>
-                            </div>
-                        </div>
-                        <div class="comment-content">
-                            ${comment.description}
-                        </div>
-                    </div>
+                const commentElement = document.createElement("div");
+                commentElement.className = "comment";
+                commentElement.innerHTML = `
+                    <strong>${comment.author || "Anonim"}</strong> - ${new Date(comment.created_at).toLocaleString("uz-UZ")}
+                    <p>${comment.description}</p>
                 `;
+                commentsContainer.appendChild(commentElement);
             });
         } catch (error) {
             console.error("Izohlarni yuklashda xatolik:", error);
@@ -78,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    // Izoh yuborish
+    // Izoh qo'shish funksiyasi
     async function postComment() {
         const commentText = commentInput.value.trim();
         if (!commentText) {
@@ -92,7 +72,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         commentButton.disabled = true;
-        commentButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Yuborilmoqda...';
+        commentButton.textContent = "Yuborilmoqda...";
 
         try {
             const response = await fetch("https://asadbek6035.pythonanywhere.com/blog/comment/post/", {
@@ -112,28 +92,17 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
 
             commentInput.value = "";
-
-            // Izoh muvaffaqiyatli qo‘shilgani haqida bildirish
-            const successMessage = document.createElement("div");
-            successMessage.className = "alert alert-success";
-            successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Izohingiz muvaffaqiyatli qo‘shildi!';
-            document.getElementById("comments-section").insertBefore(successMessage, commentsContainer);
-
-            setTimeout(() => {
-                successMessage.remove();
-            }, 3000);
-
-            await loadComments(); // Yangi izohni ko‘rsatish uchun izohlarni qayta yuklash
+            await loadComments();
         } catch (error) {
             console.error("Izoh yuborishda xatolik:", error);
             alert("Izoh yuborishda xatolik yuz berdi");
         } finally {
             commentButton.disabled = false;
-            commentButton.innerHTML = "Izoh qo‘shish";
+            commentButton.textContent = "Izoh qo‘shish";
         }
     }
 
     commentButton.addEventListener("click", postComment);
 
-    await loadComments(); 
+    await loadComments();
 });

@@ -3,27 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog tafsilotlari</title>
-    <link rel="stylesheet" href="/styles/blogs-detals.css">
+    <title>Blog Tizimi</title>
+    <link rel="stylesheet" href="/styles/system.css">
+    <script defer src="/js/system.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1 id="blog-title">Blog nomi</h1>
-        <img id="blog-image" src="" alt="Blog rasmi">
-        <p id="blog-content">Blog mazmuni</p>
-        <p id="blog-date">Sana</p>
-
-        <div id="comments-section">
-            <h3>Izohlar</h3>
-            <ul id="comments-list"></ul> 
-            
-            <textarea id="comment-text" placeholder="Izoh yozing..."></textarea>
-            <button id="add-comment-btn"><i class="fas fa-paper-plane"></i> Izoh qo‘shish</button>
-        </div>
+        <h1>Yangi blog qo‘shish</h1>
         
-        <button onclick="window.location.href='blogs.html'">Ortga</button>
-    </div>
+        <form id="blog-form">
+            <label for="blog-title">Blog nomi:</label>
+            <input type="text" id="blog-title" required>
 
-    <script defer src="/js/blog-details.js"></script>
+            <label for="blog-description">Tavsif:</label>
+            <textarea id="blog-description" required></textarea>
+
+            <label for="blog-category">Kategoriya:</label>
+            <select id="blog-category" required>
+                <option value="1">Texnologiya</option>
+                <option value="2">Hayot tarzi</option>
+                <option value="3">Ta'lim</option>
+                <option value="4">Boshqa</option>
+            </select>
+
+            <label for="blog-date">Sana:</label>
+            <input type="date" id="blog-date">
+
+            <label for="blog-image">Rasm yuklash:</label>
+            <input type="file" id="blog-image" accept="image/*" required>
+
+            <button type="submit">Blog qo‘shish</button>
+        </form>
+
+        <hr>
+
+        <h2>Mavjud bloglar</h2>
+        <div id="blogs-container"></div>
+    </div>
 </body>
 </html>
